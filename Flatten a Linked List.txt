@@ -1,0 +1,21 @@
+Node *flatten(Node *root)
+{
+   
+    if (!root)
+        return NULL;
+    
+    Node* curr = new Node(0);
+    curr->next = root;
+    Node* ans = curr;
+    
+    while (root) {
+        Node* temp = root;
+        while (temp) {
+            curr->bottom = temp;
+            temp = temp->bottom;
+            curr = curr->bottom;
+        }
+        root = root->next;
+    }
+   return ans->next;
+}
